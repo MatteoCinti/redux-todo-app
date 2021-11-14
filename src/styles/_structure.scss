@@ -1,0 +1,16 @@
+body {
+  margin: $body-top-margin auto;
+  height: 85vh; 
+  max-width: $max-page-width;
+
+  display: grid;
+  grid-template-rows: 1fr auto;
+
+  text-align: center;
+}
+
+.todos-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

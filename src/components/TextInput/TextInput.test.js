@@ -1,19 +1,16 @@
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event'
-import Input from './Input.component.js';
+import TextInput from './TextInput.component.js';
 
-describe('The Input component', () => {
-  const mockInput = 'Forza'
-  const setInputValue = jest.fn();
+describe('The TextInput component', () => {
+  const todoValue = '';
+  const setTodoValue = jest.fn();
   const name = 'test-form'
   const label = 'test'
-  let inputValue = {
-    test: ''
-  }
 
   beforeEach(() => {
-    setInputValue.mockClear();
-    render(<Input type='text' name={name} label={label} value={[inputValue.test, setInputValue]}/>)
+    setTodoValue.mockClear();
+    render(<TextInput type='text' name={name} label={label} todoState={[todoValue, setTodoValue]}/>)
   })
 
   test('Should have a label', () => {
@@ -30,7 +27,7 @@ describe('The Input component', () => {
     const textbox = screen.getByRole('textbox', { name: label })
     expect(textbox).toHaveValue('');
 
-    user.type(screen.getByRole('textbox', { name: label }), mockInput);
-    expect(textbox).toHaveValue(mockInput);
+    user.type(screen.getByRole('textbox', { name: label }), 'Forza{space}Lazio');
+    expect(textbox).toHaveValue('Forza Lazio');
   });
 })

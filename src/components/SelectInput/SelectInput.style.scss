@@ -1,0 +1,13 @@
+.add-todo,
+.form__input {
+  &__input{
+    &--select{
+      &:focus-within,
+      &:focus{
+        overflow: unset;
+        appearance: auto;
+        font-weight: 400;
+      }
+    }
+  }
+}

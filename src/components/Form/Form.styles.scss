@@ -1,0 +1,129 @@
+@mixin form-input {
+  $height: 2.3rem;
+  $margin: 1.3rem;
+  padding: 0 1rem;
+  height: $height;
+  margin-bottom: $margin;
+
+  font-size: 1.025rem;
+  font-weight: $bold;
+  text-align: left;
+}
+
+.add-todo,
+.modify-form {
+  display: grid;
+}
+
+.add-todo {
+  max-width: 550px;
+  margin: auto;
+  padding: 1.3rem;
+
+  border: none;
+
+  &__label {
+    font-size: .75rem;  
+    font-weight: $bold;
+    align-self: center;
+    margin-bottom: .7rem;
+  }
+  &__input {
+    @include form-input;
+    color: $yale-blue-75;
+    
+    background-color: $cerulean-frost-20;
+    border: none;
+
+    &:focus,
+    &:focus-within{
+      all: unset;
+      @include form-input;
+
+      background-color: $yale-blue-55; 
+      overflow: scroll;
+    }
+  }
+  &__submit {
+    justify-self: center;
+    padding: .7rem 1.3rem;
+
+    color: $yale-blue;
+    font-weight: $bold;
+    background-color: transparent;
+    border: 2px solid $yale-blue;
+
+    transition: all 250ms ease-in-out;
+    &:hover{
+      background-color: $yale-blue;
+      color: $alice-blue;
+    }
+  }
+
+}
+
+.modify-form {
+  $padding: .5rem 1.3rem;
+
+  margin: 0;
+  &__input {
+    order: 2;
+    text-align: left;
+
+    background-color: $baby-blue-eyes-30;
+    border: none;
+    padding: $padding;
+
+    &[name="title"]{
+      @include title-text;
+      &:focus,
+      &:focus-within {
+        @include title-text;
+      }
+    }
+
+    &[name="body"]{
+      @include body-text;
+      &:focus,
+      &:focus-within {
+        font-weight: 500;
+      }
+    }
+    &:focus,
+    &:focus-within{
+      @include form-input;
+      @include text-margin; 
+      background-color: $baby-blue-eyes-30;
+      overflow: scroll;
+      order: 2;
+      padding: $padding;
+    }
+    &--select{
+      order: 1;
+      @include text-margin;
+      @include category-mixin;
+      &:focus,
+      &:focus-within{
+        @include select-input;
+        @include text-margin;
+        order: 1;
+      }
+    }
+  }
+  &__submit{
+    order: 3;
+   
+  }
+}
+
+
+.completed {
+  .modify-form {
+    &__input {
+      color: $cerulean-frost
+     
+    }
+  }
+}
+
+$breakpoint-tablet: 768px;

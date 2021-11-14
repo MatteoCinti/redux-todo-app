@@ -1,35 +1,44 @@
+import { Children, cloneElement } from 'react';
 import { useState } from 'react';
-import TextInput from '../Input/Input.component';
+import { useDispatch } from 'react-redux';
 
-const Form = ({ setTodos }) => {
-  const [todoValue, setTodoValue] = useState({
-    title: '',
-    body: '',
-    category: ''
+import utils from './Form.utils'
+
+const emptyTextInput = { 
+  title: '',
+  body: '',
+  category: 'none'
+}
+
+const Form = ({ label, classValue, todoElementState, setState, children, toggleEditMode }) => {
+  const startingState = todoElementState || emptyTextInput;
+  const [todoValue, setTodoValue] = useState(startingState);
+  let dispatch = useDispatch();
+
+  const handleSubmit = (e => {
+    e.preventDefault();
+    utils[setState](todoValue, dispatch)
+    toggleEditMode && toggleEditMode(e)
+    setTodoValue(emptyTextInput)
   });
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    setTodos(prevState => ([
-      ...prevState,
-      todoValue,
-    ]));
-
-    setTodoValue(oldTodo => ({
-      ...oldTodo,
-      title: '',
-      body: '',
-    }));
-  };
-
+  const childrenWithExtraProp = Children.map( children, (child) => (
+    cloneElement(child, { todoState: [todoValue, setTodoValue] })
+  ))
+  
   return (
-    <form id="form" className='form' data-testid="form" onSubmit={handleSubmit}>
-      <TextInput type='text' name="title" label="Title" value={[todoValue.title, setTodoValue]}/>
-      <TextInput type='text-area' name="body" label="Body" value={[todoValue.body, setTodoValue]}/>
-      <TextInput type='text' name="category" label="Category" value={[todoValue.category, setTodoValue]}/>
-      <input type="submit" className="form__submit" name='add-todo' value='Add Todo'/>
+    <form id={label} className={`form ${classValue}`} aria-label={label} onSubmit={handleSubmit}>
+      {childrenWithExtraProp}
+      <input 
+        type="submit" 
+        className={`form__submit ${classValue}__submit`} 
+        name={classValue} 
+        value={classValue.replace('-', ' ')}
+      />
     </form>
   );
 };
 
 export default Form;
+
+

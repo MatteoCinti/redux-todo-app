@@ -1,0 +1,9 @@
+.hide-completed {
+  @include hide-completed;
+  padding: .3rem;
+
+  &:hover { 
+    cursor: pointer;
+    background-color: $cerulean-frost-20;
+  }
+}

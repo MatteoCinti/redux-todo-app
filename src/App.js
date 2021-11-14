@@ -1,9 +1,7 @@
-import { useState } from 'react';
-import Form from './components/Form/Form.component';
+import TodoForm from './components/TodoForm/TodoForm.component';
+import TodosContainer from './components/TodosContainer/TodosContainer.component';
 
 function App() {
-  const [todos, setTodos] = useState([]);
-
   return (
     <>
       <header className="header">
@@ -11,7 +9,8 @@ function App() {
       </header>
 
       <main className="to-do-app">
-        <Form setTodos={setTodos} />
+        <TodoForm label='todo-form' classValue='add-todo' setState='addTodo' />
+        <TodosContainer />
       </main>
     </>
   );

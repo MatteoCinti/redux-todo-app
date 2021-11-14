@@ -1,0 +1,62 @@
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) { @content; }
+}
+
+
+$font-color: $yale-blue;
+
+@mixin text-margin {
+  margin: .3rem 0;
+}
+
+@mixin title-text {
+  @include text-margin;
+  color: $font-color;
+  font-weight: $bold;
+  font-family: 'Inter';
+  font-size: 1.125rem;
+}
+@mixin body-text {
+  @include text-margin;
+  font-family: 'Inter';
+  font-size: 1rem;
+  font-weight: 500;
+  color: $yale-blue;
+}
+
+@mixin category-mixin {
+  font-size: 0.715rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: $font-color;
+}
+
+@mixin select-input {
+  @include category-mixin;
+  overflow: unset;
+  appearance: auto;
+}
+
+@mixin simple-button {
+  background-color: none;
+  border: none;
+
+  font-weight: 500;
+  text-decoration: underline;
+  color: $font-color;
+}
+
+@mixin todos-meta($top: 0rem) {
+  position: absolute;
+  top: calc(2rem + $top);
+  right: 2rem;
+
+  font-size: 0.825rem;
+  font-family: 'Inter';
+}
+
+@mixin hide-completed {
+  @include simple-button;
+  @include todos-meta;
+}
+

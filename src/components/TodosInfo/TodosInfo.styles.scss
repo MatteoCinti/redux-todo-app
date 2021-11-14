@@ -1,0 +1,4 @@
+.todos-meta{
+  @include todos-meta($top: 1.7rem);
+  font-style: italic;
+}
