@@ -1,7 +1,8 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Provider } from 'react-redux'
-import configureStore from 'redux-mock-store'
-import user from '@testing-library/user-event'
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import user from '@testing-library/user-event';
 
 import TodoElement from './TodoElement.component';
 import utils from './TodoElement.utils';
@@ -12,20 +13,19 @@ describe('The Todolement component', () => {
     title: 'Salutare Vale',
     category: 'GP',
     body: 'Vedere l\'ultima del Dottore',
-    completed: false
+    completed: false,
   };
   const mockStore = configureStore();
   let store;
 
   beforeEach(() => {
     store = mockStore([todo]);
-    render(<Provider store={store}><TodoElement todo={todo}/></Provider>);
+    render(<Provider store={store}><TodoElement todo={todo} /></Provider>);
   });
 
-
   test('Should properly display Title and Body', () => {
-    const title = screen.getByText(todo.title)
-    const body = screen.getByText(todo.body)
+    const title = screen.getByText(todo.title);
+    const body = screen.getByText(todo.body);
 
     expect(title).toBeInTheDocument();
     expect(body).toBeInTheDocument();
@@ -34,8 +34,8 @@ describe('The Todolement component', () => {
   test('Should set state on click', () => {
     const toggleCompleted = jest.spyOn(utils, 'toggleCompleted');
 
-    const submit = screen.getByRole('heading')
-    user.click(submit)
+    const submit = screen.getByRole('heading');
+    user.click(submit);
 
     expect(toggleCompleted).toHaveBeenCalledTimes(1);
   });
@@ -43,25 +43,25 @@ describe('The Todolement component', () => {
   test('Should handle multiple clicks', () => {
     const toggleCompleted = jest.spyOn(utils, 'toggleCompleted');
 
-    const submit = screen.getByRole('heading')
-    user.click(submit)
-    user.click(submit)
-    user.click(submit)
+    const submit = screen.getByRole('heading');
+    user.click(submit);
+    user.click(submit);
+    user.click(submit);
 
     expect(toggleCompleted).toHaveBeenCalledTimes(3);
   });
 
   test('On clicking remove, component sould be removed', () => {
-    const todo = {
+    const completedTodo = {
       id: 0,
       title: 'Salutare Vale',
       body: 'Vedere l\'ultima del Dottore',
-      completed: true
+      completed: true,
     };
-    store = mockStore([todo]);
+    store = mockStore([completedTodo]);
     const removeTodo = jest.spyOn(utils, 'removeTodo');
-    render(<Provider store={store}><TodoElement todo={todo}/></Provider>);
-    const removeButton = screen.getByRole('button', { name: /x/i })
+    render(<Provider store={store}><TodoElement todo={completedTodo} /></Provider>);
+    const removeButton = screen.getByRole('button', { name: /x/i });
     user.click(removeButton);
     expect(removeTodo).toHaveBeenCalledTimes(1);
   });
@@ -76,4 +76,4 @@ describe('The Todolement component', () => {
     textInputs = screen.getAllByRole('textbox');
     expect(textInputs.length).toBeGreaterThanOrEqual(1);
   });
-})
+});

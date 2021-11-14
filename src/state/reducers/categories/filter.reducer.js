@@ -1,12 +1,12 @@
-import { CHANGE_FILTER } from '../../types'
+import { CHANGE_FILTER } from '../../types';
 
 const filterReducer = (state = 'all', action) => {
-  switch(action.type) {
+  switch (action.type) {
     case CHANGE_FILTER:
-      return action.newFilter
+      return action.newFilter;
     default:
       return state;
   }
-}
+};
 
 export default filterReducer;

@@ -1,15 +1,18 @@
-const HideTodosButton = ({ hiddenState }) => { 
-  const [ hideCompleted, setHideCompleted ] = hiddenState
+import React from 'react';
+
+const HideTodosButton = ({ hiddenState }) => {
+  const [hideCompleted, setHideCompleted] = hiddenState;
   const HideCompletedTodos = e => {
     e.preventDefault();
-    setHideCompleted(prevState => !prevState)
-  }
+    setHideCompleted(prevState => !prevState);
+  };
 
   return (
-    <button className='hide-completed' onClick={HideCompletedTodos}>
+    <button className="hide-completed" onClick={HideCompletedTodos}>
       { hideCompleted ? 'Show ' : 'Hide ' }
       Completed Todos
-    </button>)
-}
+    </button>
+  );
+};
 
-export default HideTodosButton
+export default HideTodosButton;

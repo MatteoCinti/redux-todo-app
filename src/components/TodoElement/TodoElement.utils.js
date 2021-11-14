@@ -1,16 +1,17 @@
-import { toggleCompleted, removeTodo } from '../../state/actions/todos.actions'
+import { toggleCompleted, removeTodo } from '../../state/actions/todos.actions';
 
-const dispatchToggleCompleted = (e, todoId, dispatch) => { 
+const dispatchToggleCompleted = (e, todoId, dispatch) => {
   e.stopPropagation();
-  return  dispatch(toggleCompleted(todoId))
-}
+  return dispatch(toggleCompleted(todoId));
+};
 
-const dispatchRemoveTodo = (e, todoId, dispatch) => { 
+const dispatchRemoveTodo = (e, todoId, dispatch) => {
   e.stopPropagation();
-  return  dispatch(removeTodo(todoId))
-}
+  return dispatch(removeTodo(todoId));
+};
 
-export default {
+const utils = {
   toggleCompleted: dispatchToggleCompleted,
-  removeTodo: dispatchRemoveTodo
-}
+  removeTodo: dispatchRemoveTodo,
+};
+export default utils;

@@ -1,4 +1,8 @@
-const SelectInput = ({ name, label, todoState, className }) => {
+import React from 'react';
+
+const SelectInput = ({
+  name, label, todoState, className,
+}) => {
   const [todoValue, setTodoValue] = todoState;
 
   const handleChange = e => {
@@ -7,7 +11,7 @@ const SelectInput = ({ name, label, todoState, className }) => {
       [name]: e.target.value,
     }));
   };
-  
+
   return (
     <>
       <label id={name} htmlFor={name} className="form__label hidden">{label}</label>
@@ -16,8 +20,7 @@ const SelectInput = ({ name, label, todoState, className }) => {
         name={name}
         className={`${className}__input ${className}__input--select`}
         value={todoValue[name]}
-        onChange={handleChange}
-      >
+        onChange={handleChange}>
         <option className={`${className}__input--option`} value="no category">None</option>
         <option className={`${className}__input--option`} value="grapefruit">Grapefruit</option>
         <option className={`${className}__input--option`} value="lime">Lime</option>

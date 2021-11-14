@@ -1,11 +1,8 @@
-import store from './store.js';
-import { addTodo, clearTodos, toggleCompleted, removeTodo } from './actions/todos.actions';
-import todosReducer from './reducers/todos/todos.reducer';
+import store from './store';
 
 describe('Redux store', () => {
   it('gets todos', () => {
-    const todos = store.getState().todos;
+    const { todos } = store.getState();
     expect(todos).toEqual([]);
   });
 });
-

@@ -1,3 +1,4 @@
+import React from 'react';
 import TodoForm from './components/TodoForm/TodoForm.component';
 import TodosContainer from './components/TodosContainer/TodosContainer.component';
 
@@ -9,7 +10,7 @@ function App() {
       </header>
 
       <main className="to-do-app">
-        <TodoForm label='todo-form' classValue='add-todo' setState='addTodo' />
+        <TodoForm label="todo-form" classValue="add-todo" setState="addTodo" />
         <TodosContainer />
       </main>
     </>

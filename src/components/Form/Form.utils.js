@@ -1,14 +1,11 @@
-import { addTodo, updateTodo } from '../../state/actions/todos.actions'
+import { addTodo, updateTodo } from '../../state/actions/todos.actions';
 
-const dispatchAddTodo = (todoValue, dispatch) => { 
-  return dispatch(addTodo(todoValue))
-}
+const dispatchAddTodo = (todoValue, dispatch) => dispatch(addTodo(todoValue));
 
-const dispatchUpdateTodo = (todoValue, dispatch) => { 
-  return dispatch(updateTodo(todoValue))
-}
+const dispatchUpdateTodo = (todoValue, dispatch) => dispatch(updateTodo(todoValue));
 
-export default {
+const utils = {
   addTodo: dispatchAddTodo,
-  updateTodo: dispatchUpdateTodo
-}
+  updateTodo: dispatchUpdateTodo,
+};
+export default utils;

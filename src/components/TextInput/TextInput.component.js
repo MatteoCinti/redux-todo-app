@@ -1,4 +1,8 @@
-const TextInput = ({ type, name, label, todoState, className }) => {
+import React from 'react';
+
+const TextInput = ({
+  type, name, label, todoState, className,
+}) => {
   const [todoValue, setTodoValue] = todoState;
 
   const handleChange = e => {
@@ -8,7 +12,7 @@ const TextInput = ({ type, name, label, todoState, className }) => {
       [name]: e.target.value,
     }));
   };
-  
+
   return (
     <>
       <label id={name} htmlFor={name} className="form__label hidden">{label}</label>
@@ -20,8 +24,7 @@ const TextInput = ({ type, name, label, todoState, className }) => {
         placeholder={label}
         value={todoValue[name]}
         onChange={handleChange}
-        required
-      />
+        required />
     </>
   );
 };
