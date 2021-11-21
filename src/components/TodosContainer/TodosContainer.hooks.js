@@ -9,13 +9,13 @@ const filterTodosByCategory = (state, categoryFilter) => {
     ? state.filter(todo => todo.category === filter)
     : state
   )
-}
+};
 
 const filterTodosIfCompleted = (filteredState, hideCompleted) => {
   return hideCompleted
     ? filteredState.filter(todo => !todo.completed)
     : filteredState
-}
+};
 
 const FilterTodos = (hideCompleted)=> (
   useSelector(
