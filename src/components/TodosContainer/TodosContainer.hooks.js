@@ -28,6 +28,7 @@ const FilterTodos = (hideCompleted)=> (
   )
 );
 
-export default {
+const hooks = {
   FilterTodos
-}
+};
+export default hooks;

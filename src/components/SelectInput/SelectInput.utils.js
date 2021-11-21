@@ -1,4 +1,4 @@
-import { changeCategoryFilter, addCategory } from '../../state/actions/categories.actions'
+import { changeCategoryFilter } from '../../state/actions/categories.actions'
 
 const dispatchChangeCategoryFilter = (newFilter, dispatch) => dispatch(changeCategoryFilter(newFilter));
 
