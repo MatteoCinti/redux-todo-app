@@ -21,7 +21,6 @@ const FilterTodos = (hideCompleted)=> (
   useSelector(
     state => {
       const filteredByCategory = filterTodosByCategory(state.todos, CategoryFilter)
-      console.log(filteredByCategory)
       const filteredByCompleted = filterTodosIfCompleted(filteredByCategory, hideCompleted)
 
       return filteredByCompleted

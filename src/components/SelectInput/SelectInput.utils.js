@@ -1,8 +1,8 @@
-import { changeCategoryFilter } from '../../state/actions/categories.actions'
+import { changeCategoryFilter, addCategory } from '../../state/actions/categories.actions'
 
-const dispatchchangeCategoryFilter = (newFilter, dispatch) => dispatch(changeCategoryFilter(newFilter));
+const dispatchChangeCategoryFilter = (newFilter, dispatch) => dispatch(changeCategoryFilter(newFilter));
 
 const utils = {
-  changeCategoryFilter: dispatchchangeCategoryFilter,
+  changeCategoryFilter: dispatchChangeCategoryFilter,
 };
 export default utils;

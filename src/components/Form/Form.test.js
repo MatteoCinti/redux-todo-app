@@ -25,4 +25,13 @@ describe('The Form component', () => {
 
     expect(addTodo).toHaveBeenCalledTimes(1);
   });
+  
+  test('Should add call the addCategory dispatcher on submit', () => {
+    const addCategory = jest.spyOn(utils, 'addCategory');
+
+    const submit = screen.getByRole('button', /add-to-do/i);
+    user.click(submit);
+
+    expect(addCategory).toHaveBeenCalledTimes(1);
+  });
 });

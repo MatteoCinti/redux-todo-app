@@ -5,3 +5,4 @@ export const REMOVE_TODO = 'REMOVE_TODO';
 export const UPDATE_TODO = 'UPDATE_TODO';
 
 export const CHANGE_CATEGORY_FILTER = 'CHANGE_CATEGORY_FILTER';
+export const ADD_CATEGORY = 'ADD_CATEGORY';

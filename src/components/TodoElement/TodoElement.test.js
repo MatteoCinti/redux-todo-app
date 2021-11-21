@@ -19,7 +19,7 @@ describe('The Todolement component', () => {
   let store;
 
   beforeEach(() => {
-    store = mockStore([todo]);
+    store = mockStore({todos: [todo], categories: { filter:'all' }});
     render(<Provider store={store}><TodoElement todo={todo} /></Provider>);
   });
 

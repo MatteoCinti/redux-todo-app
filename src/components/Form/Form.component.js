@@ -17,6 +17,7 @@ const Form = ({ label, classValue, todoElementState, setState, children, toggleE
   const handleSubmit = (e => {
     e.preventDefault();
     utils[setState](todoValue, dispatch);
+    utils.addCategory(todoValue.category, dispatch)
     toggleEditMode && toggleEditMode(e);
     setTodoValue(emptyTextInput);
   });
