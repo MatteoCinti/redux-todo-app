@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoForm from './components/TodoForm/TodoForm.component';
 import TodosContainer from './components/TodosContainer/TodosContainer.component';
-import SelectInput from './components/SelectInput/SelectInput.component';
+import CategoryFilterForm from './components/CategoryFilterForm/CategoryFilterForm.component';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       </header>
 
       <main className="to-do-app">
-        <SelectInput name="category-filter" label="Category-filter" className='category-filter' isFilter={true}/>
+        <CategoryFilterForm />
         <TodoForm label="todo-form" classValue="add-todo" setState="addTodo" />
         <TodosContainer />
       </main>

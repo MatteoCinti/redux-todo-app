@@ -1,0 +1,15 @@
+.category-filter {
+  &__title{
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+  }
+  &__input{
+    @include form-input;
+    color: $yale-blue-75;
+    
+    background-color: $cerulean-frost-20;
+    border: none;
+
+    font-size: .8rem;
+  }
+}
