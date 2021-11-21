@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 
 import TodoElement from '../TodoElement/TodoElement.component';
 import HideTodosButton from '../HideTodosButton/HideTodosButton.component';
 import TodosInfo from '../TodosInfo/TodosInfo.component';
 
-const FilterCompletedTodos = hideCompleted => useSelector(state => (hideCompleted
-  ? state.todos.filter(todo => !todo.completed)
-  : state.todos));
+import hooks from './TodosContainer.hooks'
 
 const TodosContainer = () => {
   const [hideCompleted, setHideCompleted] = useState(false);
-  const todos = FilterCompletedTodos(hideCompleted);
+  const todos = hooks.FilterTodos(hideCompleted);
 
   return (
     <section className="todos-container" data-testid="todos-container">

@@ -1,14 +1,13 @@
 import {
   ADD_TODO, CLEAR_TODOS, TOGGLE_COMPLETED, REMOVE_TODO, UPDATE_TODO,
 } from '../../types';
-
-const nextId = state => state.length;
+import { v4 as uuidv4 } from 'uuid';
 
 const addTodo = (todo, oldState) => [
   ...oldState,
   {
     ...todo,
-    id: nextId(oldState),
+    id: uuidv4(),
     completed: false,
   },
 ];
@@ -27,14 +26,14 @@ const removeTodo = (id, oldState) => {
   const foundIndex = oldState.findIndex(todo => todo.id === id);
   const updatedState = oldState;
   updatedState.splice(foundIndex, 1);
-  updatedState.forEach((todo, i) => { todo.id = i; });
   return [...updatedState];
 };
 
 const toggleCompleted = (id, oldState) => {
   const foundIndex = oldState.findIndex(todo => todo.id === id);
-  oldState[foundIndex].completed = !oldState[foundIndex].completed;
-  return [...oldState];
+  const updatedState = oldState;
+  updatedState[foundIndex].completed = !updatedState[foundIndex].completed;
+  return [...updatedState];
 };
 
 const todosReducer = (state = [], action) => {

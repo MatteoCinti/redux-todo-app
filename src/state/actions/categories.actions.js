@@ -1,6 +1,6 @@
-import { CHANGE_FILTER } from '../types';
+import { CHANGE_CATEGORY_FILTER } from '../types';
 
-export const changeFilter = newFilter => ({
-  type: CHANGE_FILTER,
+export const changeCategoryFilter = newFilter => ({
+  type: CHANGE_CATEGORY_FILTER,
   newFilter,
 });

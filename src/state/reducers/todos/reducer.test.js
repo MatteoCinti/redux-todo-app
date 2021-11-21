@@ -3,8 +3,14 @@ import {
   removeTodo, clearTodos, toggleCompleted, updateTodo,
 } from '../../actions/todos.actions';
 import utils from './test.utils';
+import * as uuid from 'uuid';
 
 describe('Redux store', () => {
+  jest.mock('uuid', () => {
+    let value = 0;
+    return () => value++;
+   });
+
   test('should return the initial state', () => {
     expect(todosReducer(undefined, {})).toEqual([]);
   });
@@ -29,7 +35,7 @@ describe('Redux store', () => {
     const initialState = [utils.testState1, utils.testState2, utils.testState3, utils.testState4];
     const modifiedStore = todosReducer(initialState, removeTodo(2));
     expect(modifiedStore[2].title).toEqual(utils.testState4.title);
-    expect(modifiedStore[2].id).toEqual(2);
+    expect(modifiedStore[2].id).toEqual(3);
   });
 
   test('it updates an existing todo', () => {

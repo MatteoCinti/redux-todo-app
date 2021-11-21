@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 import App from './App';
 
 describe('The App component', () => {
-  const initialState = { todos: [] };
+  const initialState = { todos: [], categories: { filter:'all' } };
   const mockStore = configureStore();
   let store;
 

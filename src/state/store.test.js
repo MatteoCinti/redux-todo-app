@@ -1,7 +1,9 @@
 import store from './store';
+import { loadLocaStorageState } from './localStorage';
+
 
 describe('Redux store', () => {
-  it('gets todos', () => {
+  test('renders default store', () => {
     const { todos } = store.getState();
     expect(todos).toEqual([]);
   });

@@ -1,15 +1,19 @@
 import todosReducer from './todos.reducer';
 import { addTodo } from '../../actions/todos.actions';
 import utils from './test.utils';
+import { v4 } from 'uuid';
+jest.mock('uuid');
 
 describe('Adding a todo handles', () => {
   test('a todo being added to an empty list', () => {
+    v4.mockImplementation(() => 0);
     const previousState = [];
     const expectedState = [utils.testState1];
     expect(todosReducer(previousState, addTodo(utils.testState1))).toEqual(expectedState);
   });
 
   test('should handle a todo being added to an existing list', () => {
+    v4.mockImplementation(() => 1);
     const previousState = [utils.testState1];
     const expectedState = [...previousState, utils.testState2];
 
@@ -18,6 +22,8 @@ describe('Adding a todo handles', () => {
 
   test('setting incremental id automatically', () => {
     const previousState = [];
+    let id = 0
+    v4.mockImplementation(() => id++);
 
     const idTestState1 = utils.testState1;
     idTestState1.id = 6;

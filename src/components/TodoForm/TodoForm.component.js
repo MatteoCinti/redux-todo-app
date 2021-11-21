@@ -8,7 +8,7 @@ const TodoForm = props => (
   <Form {...props}>
     <TextInput type="text" name="title" label="Title" className={props.classValue} />
     <TextInput type="text-area" name="body" label="Body" className={props.classValue} />
-    <SelectInput type="text" name="category" label="Category" className={props.classValue} />
+    <SelectInput name="category" label="Category" className={props.classValue} />
   </Form>
 );
 

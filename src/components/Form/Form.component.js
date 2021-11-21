@@ -9,9 +9,7 @@ const emptyTextInput = {
   category: 'no category',
 };
 
-const Form = ({
-  label, classValue, todoElementState, setState, children, toggleEditMode,
-}) => {
+const Form = ({ label, classValue, todoElementState, setState, children, toggleEditMode }) => {
   const startingState = todoElementState || emptyTextInput;
   const [todoValue, setTodoValue] = useState(startingState);
   const dispatch = useDispatch();
@@ -34,7 +32,8 @@ const Form = ({
         type="submit"
         className={`form__submit ${classValue}__submit`}
         name={classValue}
-        value={classValue.replace('-', ' ')} />
+        value={classValue.replace('-', ' ')} 
+      />
     </form>
   );
 };
